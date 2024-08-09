@@ -1,0 +1,17 @@
+## ISTRUZIONI PER UN USO CORRETTO DEI FILE DEL MOTORE GRAFICO E INDICAZIONI PER LA MODIFICA.
+@@@ VERSIONE 1.0 (RENDER TEST) @@@
+
+## 1) STRUTTURA DEI FILE
+I FILE HANNO UNA STRUTTURA PRECISA E NON DEVE ESSERE MODIFICATA PER GARANTIRE IL FUNZIONAMENTO DEL UL-ENGINE.
+
+NON MODIFICARE!
+- MAIN-FILES {
+---- ENGINE.JS
+(engine.js contiene le informazioni necessarie al rendering delle animazioni e delle pagine successive in fade.in
+e un sistema di rilevamento della connessione che determina se l'utente è offline o online)
+---- OFFLINE.HTML
+(offline.html contiene le informazioni estetiche e funzionali da mostrare in caso l'utente andasse offline)
+}
+---- INDEX.HTML 
+(index.html contiene le informazioni del rendering edlla prima pagina (splash screen) e il post processig
+delle risorse da usare successivamente)
