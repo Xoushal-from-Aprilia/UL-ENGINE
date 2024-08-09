@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UL ENGINE - RENDER TEST</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+@font-face {
+    font-family: "Belanosima";
+    src: url('/fonts/belanosima.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Belanosima";
+    background-color: #0d0d0d;
+    color: #ffffff;
+    overflow-x: hidden;
+    opacity: 0;
+    transition: opacity 1s;
+    user-select: none;
+   -webkit-user-select: none; /* Chrome, Safari, Opera */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+    user-select: none;         /* Standard */
+    webkit-touch-callout: none; /* iOS Safari */
+    
+    
+    
+    -webkit-tap-highlight-color: transparent; /* Rimuove l'effetto di evidenziazione */
+    
+}
+
+body.fade-in {
+    opacity: 1;
+}
+
+header {
+    background: #0d0d0d;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 92%;
+    top: 0;
+    z-index: 1000;
+    animation: fadeInDown 1s ease-in-out;
+}
+
+header img {
+    max-height: 45px;
+}
+
+.container {
+    margin-top: 80px;
+    padding: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "Belanosima";
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero {
+    text-align: center;
+    padding: 95px 20px;
+    color: #ffffff;
+    animation: slideIn 1s ease-in-out;
+}
+
+.hero h1 {
+    font-size: 60px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8); /* Scritta leggermente trasparente */
+    text-shadow: 
+        0 0 30px rgba(148, 61, 223, 0.9),
+        0 0 60px rgba(148, 61, 223, 0.7),
+        0 0 90px rgba(148, 61, 223, 0.5),
+        0 0 120px rgba(148, 61, 223, 0.3);
+        pointer-events: none;
+}
+
+.hero p {
+    font-size: 18px;
+    margin: 20px 0 40px;
+    font-family: "Belanosima";
+    pointer-events: none;
+}
+
+.hero button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #0d0d0d;
+    background: #943DDF;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    font-family: "Belanosima";
+}
+
+.hero button:hover {
+    background: #7a33b6;
+}
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 50px 0;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.feature {
+    background: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 30%;
+    margin: 15px;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    animation: slideInUp 1s ease-in-out;
+    outline: none; /* Rimuove il contorno blu */
+    -webkit-user-select: none; /* Chrome, Safari, Opera */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+    user-select: none;         /* Standard */
+    
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+}
+
+.feature h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    font-size: 16px;
+}
+
+.feature img {
+    width: 24px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #0d0d0d;
+    border-top: 1px solid #333;
+    margin-top: 50px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+.contact-form {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    font-family: "Belanosima";
+    animation: fadeIn 2s ease-in-out;
+}
+
+.contact-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: "Belanosima";
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background: #333;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #943DDF;
+    color: #0d0d0d;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+    background: #7a33b6;
+}
+
+@media (max-width: 768px) {
+    .feature {
+        width: 100%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.faq-section {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 800px;
+    font-family: "Belanosima";
+    animation: fadeIn 2s ease-in-out;
+}
+
+.faq-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: "Belanosima";
+}
+
+.faq-item {
+    margin-bottom: 20px;
+}
+
+.faq-item h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.faq-item p {
+    font-size: 16px;
+    display: none;
+}
+
+.faq-item.active p {
+    display: block;
+}
+
+.faq-item:hover h3 {
+    color: #943DDF;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+    </style>
+</head>
+
+
+
+<body>
+    <header>
+      
+
+      
+        <img src="/icons/1717532618912.png" alt="Logo">
+    </header>
+
+
+    <div class="container">
+        <div class="hero">
+            <h1>UPLOOP ENGINE</h1>
+            <p>Scopri un nuovo modo di renderizzare le tue web app.</p>
+            <button onclick="window.location.href='/file.di.prova'">test</button>
+        </div>
+
+      <div class="features">
+            <a href="/newsletter/news.html" class="feature">
+                <h2><img src="/icons/news.png" alt="">Test 1</h2>
+                <p>Esplora tutte le novità inerenti al mondo di UPLOOP.</p>
+            </a>
+            <a href="/project.html" class="feature">
+                <h2><img src="/icons/1719820931872.png" alt="">Test 2</h2>
+                <p>Immergiti in una raccolta di progetti comunitari senza fine.</p>
+            </a>
+            
+                        <a href="/revolution.html" class="feature">
+                <h2><img src="/icons/store-revolution.png" alt="">Test 3</h2>
+                <p>Scopri il nostro store unico, articoli, progetti e app sono pubblici a tutti.</p>
+            </a>
+            
+            <a href="/about.html" class="feature">
+                <h2><img src="/icons/staff.png" alt="">Test 4</h2>
+                <p>Visualizza il nostro Head.</p>
+            </a>
+        </div>
+<div class="faq-section">
+        <h2>FAQ RENDER</h2>
+        <div class="faq-item">
+            <h3><span class="faq-icon">💪🏻</span>Render 1</h3>
+            <p>Testo di supporto ai rendering.</p>
+        </div>
+        <div class="faq-item">
+            <h3><span class="faq-icon">💜</span> Render 2</h3>
+            <p>Testo di supporto ai rendering.</p>
+        </div>
+        <div class="faq-item">
+            <h3><span class="faq-icon">🤝</span>Render 3</h3>
+            <p>Testo di supporto ai rendering.</p>
+        </div>
+    </div>
+       
+    </div>
+<footer>
+    <p>&copy; 2024 UL-ENGINE</p>
+    <p>Seguici su <a href="https://whatsapp.com/channel/0029Va7vKV37oQhTozVfMu3k" style="color: #943DDF;">Whatsapp</a>, <a href="https://www.tiktok.com/@uploopstudio?_t=8ocWgN3pEZt&_r=1" style="color: #943DDF;">Tiktok</a>, e <a href="https://www.instagram.com/uploopstudio?igsh=d29pcTVwc3QwaDEw" style="color: #943DDF;">Instagram</a></p>
+</footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('fade-in');
+        });
+
+        function scrollToContact() {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+    document.body.classList.add('fade-in');
+
+    var faqItems = document.querySelectorAll('.faq-item h3');
+    faqItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            var parent = item.parentNode;
+            parent.classList.toggle('active');
+        });
+    });
+});
+    </script>
+    
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "4243567b-a599-461e-8d4c-c28496b9d7b8",
+      safari_web_id: "web.onesignal.auto.61cc1b76-79db-483e-a0b9-263210abb193",
+      notifyButton: {
+        enable: true,
+      },
+    });
+  });
+</script>
+    
+</body>
+</html>

@@ -1,14 +1,98 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Splash Screen</title>
+    
+<!-- HTML Meta Tags -->
+<title>💜 BENVENUTO NELLA UPLOOP HUB 💜</title>
+<meta name="description" content="Il mondo di UPLOOP a portata di mano, esplora i vari contenuti che la nostra hub offre e rimani sempre aggiornato con le ultime news 🗞️.">
+
+<!-- HTML Meta Tags -->
+<title>💜 BENVENUTO NELLA UPLOOP HUB 💜</title>
+<meta name="description" content="Il mondo di UPLOOP a portata di mano, esplora i vari contenuti che la nostra hub offre e rimani sempre aggiornato con le ultime news 🗞️.">
+
+<!-- Facebook Meta Tags -->
+<meta property="og:url" content="https://new-hub-test.netlify.app/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="💜 BENVENUTO NELLA UPLOOP HUB 💜">
+<meta property="og:description" content="Il mondo di UPLOOP a portata di mano, esplora i vari contenuti che la nostra hub offre e rimani sempre aggiornato con le ultime news 🗞️.">
+<meta property="og:image" content="https://opengraph.b-cdn.net/production/images/1eec47d7-cc2b-40e7-9127-2f48a959697b.png?token=A5BMX4hX4aTNQigP5o2x4rAAKnSLgFfLCJ-DkUkwY5E&height=675&width=1200&expires=33259190501">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="new-hub-test.netlify.app">
+<meta property="twitter:url" content="https://new-hub-test.netlify.app/">
+<meta name="twitter:title" content="💜 BENVENUTO NELLA UPLOOP HUB 💜">
+<meta name="twitter:description" content="Il mondo di UPLOOP a portata di mano, esplora i vari contenuti che la nostra hub offre e rimani sempre aggiornato con le ultime news 🗞️.">
+<meta name="twitter:image" content="https://opengraph.b-cdn.net/production/images/1eec47d7-cc2b-40e7-9127-2f48a959697b.png?token=A5BMX4hX4aTNQigP5o2x4rAAKnSLgFfLCJ-DkUkwY5E&height=675&width=1200&expires=33259190501">
+
+<!-- Meta Tags Generated via https://www.opengraph.xyz -->
+    
+    
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+    
+            @font-face {
+            font-family: "Belanosima";
+            src: url('/fonts/belanosima.ttf') format('truetype');
+            
+            
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0d0d0d;
+            color: #5C5D64;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            opacity: 1;
+            transition: opacity 1s;
+            font-family: "Belanosima";
+        }
+
+        .splash-container {
+            text-align: center;
+            font-family: "Belanosima";
+        }
+
+        .splash-logo {
+            max-width: 200px;
+            animation: fadeIn 2s;
+        }
+
+        .splash-text {
+            font-size: 24px;
+            margin-top: 20px;
+            animation: fadeIn 2s;
+            font-family: "Belanosima";
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+            -webkit-tap-highlight-color: transparent; /* Rimuove l'effetto di evidenziazione */
+    
+    </style>
+    
 </head>
-
 <body>
+    <div class="splash-container">
+        <img src="/icons/1717532618912.png" alt="Logo" class="splash-logo">
+        <div class="splash-text">UL-ENGINE v. 1.0 (Render-Beta)</div>
+    </div>
 
+    <script src="/main-files/engine.js"></script>
 </body>
-
 </html>
