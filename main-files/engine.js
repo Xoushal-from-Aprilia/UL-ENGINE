@@ -3,7 +3,7 @@
             setTimeout(function() {
                 document.body.style.opacity = '0';
                 setTimeout(function() {
-                    window.location.href = '/home.html';
+                    window.location.href = 'rendering/render.html';
                 }, 1000); // Delay of 1 second for fade out
             }, 5000); // Delay of 3 seconds for splash screen
         });
