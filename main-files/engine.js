@@ -43,3 +43,69 @@
         }
   
     
+function preloadImages(urls) {
+    urls.forEach(url => {
+        const img = new Image();
+        img.src = url;
+    });
+}
+
+
+function preloadScripts(urls) {
+    urls.forEach(url => {
+        const script = document.createElement('script');
+        script.src = url;
+        script.async = true;
+        document.head.appendChild(script);
+    });
+}
+
+
+function preloadStyles(urls) {
+    urls.forEach(url => {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = url;
+        document.head.appendChild(link);
+    });
+}
+
+
+function preloadPageResources(pageUrl) {
+    fetch(pageUrl)
+        .then(response => response.text())
+        .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+
+         
+            const imageUrls = Array.from(doc.images).map(img => img.src);
+            preloadImages(imageUrls);
+
+            
+            const styleUrls = Array.from(doc.querySelectorAll('link[rel="stylesheet"]')).map(link => link.href);
+            preloadStyles(styleUrls);
+
+            
+            const scriptUrls = Array.from(doc.querySelectorAll('script[src]')).map(script => script.src);
+            preloadScripts(scriptUrls);
+        })
+        .catch(error => console.error('Errore nel precaricamento delle risorse della pagina:', error));
+}
+
+
+function preloadAllNextPages() {
+    const pageUrls = Array.from(document.querySelectorAll('a[href]'))
+        .map(a => a.href)
+        .filter(href => href.startsWith(window.location.origin));
+
+
+    const uniquePageUrls = [...new Set(pageUrls)];
+
+     uniquePageUrls.forEach(pageUrl => {
+        preloadPageResources(pageUrl);
+    });
+}
+
+
+preloadAllNextPages();
